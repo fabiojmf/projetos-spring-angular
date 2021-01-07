@@ -1,0 +1,48 @@
+<div class="bg-secondary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">
+                                        {{ cadastro ? 'Cadastrar novo usuário' : 'Entrar no sistema'}}
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-success" *ngIf="mensagemCadastroSucesso">
+                                        {{mensagemCadastroSucesso}}
+                                    </div>
+                                    <div class="alert alert-danger" *ngFor="let error of errors">
+                                        {{error}}
+                                    </div>
+                                    <form #loginForm="ngForm" (submit)="onSubmit()">
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputUsername">Usuario</label>
+                                            <input class="form-control py-4" [(ngModel)]="username" name="inputUsername" type="text" autocomplete="off" placeholder="Informe o usuaio" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputPassword">Senha</label>
+                                            <input class="form-control py-4" [(ngModel)]="password" name="inputPassword" type="password" placeholder="Informe a senha" />
+                                        </div>
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <button class="btn btn-primary" type="submit" *ngIf="!cadastro">Entrar</button>
+                                            <button class="btn btn-success" type="button" *ngIf="cadastro" (click)="cadastrarUsuario()">Cadastrar</button>
+                                            <button class="btn btn-danger" href="javascript:void(0)" (click)="cancelarNovoCadastro()" type="submit" *ngIf="cadastro">Cancelar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center" *ngIf="!cadastro">
+                                    <div class="small"><a id="botaoNovoCadastro" href="javascript:void(0)" (click)="iniciarNovoCadastro()">Criar nova conta</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

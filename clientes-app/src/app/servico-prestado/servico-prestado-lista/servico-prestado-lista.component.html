@@ -1,0 +1,72 @@
+<h1 class="mt-4">Serviços</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Consulta</li>
+    </ol>
+</nav>
+<div class="container-fluid">
+    <form #consultaServicosForm="ngForm" (submit)="buscarPorNomeMes()">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="inputNome">Nome do cliente:</label>
+                <input type="text" [(ngModel)]="nome" name="nome" class="form-control" id="inputNome">
+            </div>
+            <div class="col-md-3">
+                <label for="inputMes">Mês:</label>
+                <select class="form-control" [(ngModel)]="mes" name="mes">
+                    <option value="">Selecione</option>
+                    <option *ngFor="let valor of meses" [value]="valor">
+                        {{valor}}
+                    </option>
+                </select>
+            </div>    
+            <div class="col align-self-end">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i> Pesquisar
+                </button>
+            </div>
+        </div>
+    </form>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert" *ngIf="message">
+                {{ message }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let servico of servicosPrestados">
+                        <td>{{ servico.cliente.nome }}</td>
+                        <td>{{ servico.descricao }}</td>
+                        <td>{{ servico.valor }}</td>
+                        <td>{{ servico.data }}</td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-warning" (click)="newServico()">
+                <i class="fa fa-plus"></i> Novo
+            </button>
+        </div>
+    </div>
+</div>
