@@ -1,0 +1,17 @@
+<mat-card style="text-align: center;">
+    <mat-card-header>
+        <mat-card-title style="text-align: left;">{{contato.nome}}</mat-card-title>
+        <mat-card-subtitle style="text-align: left;">{{contato.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <img class="foto" src="data:image/jpg;base64,{{contato.foto}}" />
+    <mat-card-content>
+        <p>
+            {{contato.nome}}
+            <br/>
+            {{contato.email}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="fechar()">FECHAR</button>
+    </mat-card-actions>
+</mat-card>
